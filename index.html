@@ -1,318 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alpha.Dev | Gaming Platform</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-
-:root {
-  --bg:#080b14;
-  --panel:#111827;
-  --purple:#8b5cf6;
-  --blue:#38bdf8;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:'Cairo',sans-serif;
-}
-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:18px 7%;border-bottom:1px solid #ffffff12;
-  position:sticky;top:0;background:#080b14ed;z-index:5;
-  backdrop-filter:blur(12px);
-}
-.logo{font-size:25px;font-weight:900;direction:ltr}
-.logo span{color:var(--purple)}
-nav{display:flex;gap:25px}
-nav a{color:var(--muted);text-decoration:none;font-size:14px}
-nav a:hover{color:white}
-button{
-  border:0;cursor:pointer;font-family:inherit;font-weight:700;
-  border-radius:9px;padding:11px 19px;color:white;
-  background:linear-gradient(100deg,#7c3aed,#2563eb);
-}
-button:hover{filter:brightness(1.2)}
-.hero{
-  padding:85px 8% 75px;text-align:center;
-  background:radial-gradient(ellipse at 50% 0%,#5428a53d,transparent 65%);
-}
-.tag{
-  color:#c4b5fd;background:#8b5cf622;
-  border:1px solid #8b5cf655;padding:6px 16px;
-  border-radius:30px;font-size:12px;
-}
-.hero h1{font-size:clamp(35px,6vw,65px);line-height:1.3;margin:25px 0 12px}
-.hero h1 span{color:#a78bfa}
-.hero p{color:var(--muted);max-width:550px;margin:0 auto 27px}
-.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.secondary{background:#ffffff10;border:1px solid #ffffff20}
-.stats{
-  display:flex;justify-content:center;gap:55px;
-  padding:22px;flex-wrap:wrap;border-bottom:1px solid #ffffff12;
-}
-.stat{text-align:center}
-.stat strong{display:block;font-size:23px;color:#a78bfa}
-.stat small{color:var(--muted)}
-section{padding:55px 8%}
-.section-head{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:15px;flex-wrap:wrap;margin-bottom:25px;
-}
-.section-head h2{font-size:25px;margin:0}
-.section-head p{color:var(--muted);font-size:13px;margin:3px 0}
-.search{
-  background:#111827;border:1px solid #273449;color:white;
-  padding:12px 15px;border-radius:9px;font-family:inherit;
-  width:min(260px,100%);
-}
-.games{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
-}
-.game{
-  background:var(--panel);border:1px solid #ffffff12;
-  border-radius:15px;overflow:hidden;transition:.25s;
-}
-.game:hover{transform:translateY(-5px);border-color:#8b5cf677}
-.cover{
-  height:165px;background:#1e293b center/cover no-repeat;
-  display:grid;place-items:center;font-size:50px;
-}
-.game-info{padding:17px}
-.game-info h3{margin:0 0 5px}
-.game-info p{color:var(--muted);font-size:13px;min-height:42px}
-.game-bottom{display:flex;justify-content:space-between;align-items:center}
-.game-bottom small{color:#a78bfa}
-.play{padding:8px 17px;font-size:12px}
-.empty{
-  color:var(--muted);text-align:center;padding:45px;
-  border:1px dashed #334155;border-radius:13px;
-}
-.about{
-  text-align:center;background:#111827;
-  border-radius:18px;padding:40px 20px;
-}
-.about p{color:var(--muted);max-width:550px;margin:auto}
-footer{
-  text-align:center;padding:30px;color:var(--muted);
-  border-top:1px solid #ffffff12;font-size:13px;
-}
-footer b{color:#a78bfa}
-.modal{
-  display:none;position:fixed;inset:0;background:#000c;
-  z-index:10;align-items:center;justify-content:center;padding:15px;
-}
-.modal.open{display:flex}
-.modal-box{
-  background:#111827;border:1px solid #334155;border-radius:16px;
-  padding:25px;width:min(440px,100%);
-}
-.modal-box h2{margin-top:0}
-.modal-box input,.modal-box textarea{
-  width:100%;margin:7px 0 13px;padding:12px;
-  border-radius:8px;border:1px solid #334155;
-  background:#080b14;color:white;font-family:inherit;
-}
-.modal-box textarea{resize:vertical;min-height:75px}
-.modal-actions{display:flex;gap:10px}
-.modal-actions button{flex:1}
-@media(max-width:600px){
-  nav{gap:10px}
-  nav a{font-size:12px}
-  header{padding:15px 4%}
-  section{padding:40px 5%}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alpha.Dev — منصة الألعاب والمطورين العرب">
+  <title>Alpha.Dev | منصة الألعاب العربية</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
 </head>
 <body>
-
-<header>
-  <div class="logo">Alpha<span>.Dev</span></div>
-  <nav>
-    <a href="#home">الرئيسية</a>
-    <a href="#games">الألعاب</a>
-    <a href="#about">من نحن</a>
-  </nav>
-  <button onclick="openModal()">+ إضافة لعبة</button>
+<header class="topbar">
+  <a class="brand" href="#">Alpha<span>.Dev</span></a>
+  <nav><a href="#games">الألعاب</a><a href="#publish">انشر لعبة</a><a href="#profile">ملفي</a></nav>
+  <div class="header-actions"><span id="user-chip" class="muted"></span><button id="auth-button">تسجيل الدخول</button></div>
 </header>
+<main class="container">
+  <section class="hero">
+    <div><span class="eyebrow">مجتمع المطورين العرب</span><h1>ألعابك تستحق أن يكتشفها العالم.</h1>
+      <p>اكتشف ألعاباً جديدة، شارك لعبتك، وابنِ ملفك كمطوّر على Alpha.Dev.</p>
+      <a class="button" href="#games">اكتشف الألعاب</a>
+    </div><div class="hero-art" aria-hidden="true">🎮</div>
+  </section>
 
-<main>
-<div class="hero" id="home">
-  <span class="tag">WELCOME TO ALPHA.DEV</span>
-  <h1>عالم الألعاب<br><span>يبدأ من هنا.</span></h1>
-  <p>اكتشف ألعابي، جرّب تجاربي الجديدة، وكن جزءاً من رحلتي في تطوير الألعاب.</p>
-  <div class="actions">
-    <button onclick="document.querySelector('#games').scrollIntoView({behavior:'smooth'})">اكتشف الألعاب 🎮</button>
-    <button class="secondary" onclick="openModal()">انشر لعبتك +</button>
-  </div>
-</div>
-
-<div class="stats">
-  <div class="stat"><strong id="gameCount">0</strong><small>الألعاب المنشورة</small></div>
-  <div class="stat"><strong>24/7</strong><small>عالم الألعاب</small></div>
-  <div class="stat"><strong>Alpha</strong><small>الإبداع والتطوير</small></div>
-</div>
-
-<section id="games">
-  <div class="section-head">
-    <div>
-      <h2>🎮 مكتبة الألعاب</h2>
-      <p>اكتشف أحدث الألعاب التي طورتها</p>
+  <section id="games">
+    <div class="section-head"><div><span class="eyebrow">المكتبة</span><h2>الألعاب المنشورة</h2></div>
+      <input id="search" class="search" placeholder="ابحث عن لعبة أو مطوّر..." aria-label="بحث">
     </div>
-    <input class="search" id="search" placeholder="ابحث عن لعبة..." oninput="renderGames()">
-  </div>
-  <div class="games" id="gamesList"></div>
-</section>
+    <div id="game-list" class="game-grid"><div class="empty">حمّل الصفحة لعرض الألعاب المنشورة.</div></div>
+  </section>
 
-<section id="about">
-  <div class="about">
-    <h2>🚀 أهلاً بك في Alpha.Dev</h2>
-    <p>منصة مستقلة لعرض الألعاب والتجارب البرمجية. كل لعبة هنا تمثل فكرة جديدة وخطوة في عالم تطوير الألعاب.</p>
-  </div>
-</section>
-</main>
-
-<footer>
-  © 2026 <b>Alpha.Dev</b> — جميع الحقوق محفوظة.
-  <br>Made with passion 🎮
-</footer>
-
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <h2>➕ إضافة لعبة جديدة</h2>
-    <form id="gameForm">
-      <label>اسم اللعبة</label>
-      <input id="gameName" required maxlength="50" placeholder="اسم لعبتك">
-      <label>وصف اللعبة</label>
-      <textarea id="gameDesc" required maxlength="180" placeholder="اكتب وصفاً قصيراً"></textarea>
-      <label>رابط صورة اللعبة</label>
-      <input id="gameImage" type="url" placeholder="https://example.com/image.jpg">
-      <label>رابط تشغيل اللعبة</label>
-      <input id="gameUrl" type="url" required placeholder="https://example.com/game">
-      <div class="modal-actions">
-        <button type="submit">نشر اللعبة 🚀</button>
-        <button type="button" class="secondary" onclick="closeModal()">إلغاء</button>
-      </div>
+  <section id="publish" class="panel">
+    <div class="section-head"><div><span class="eyebrow">للمطورين</span><h2>انشر لعبتك</h2></div></div>
+    <p class="muted">ارفع ملف ZIP يحتوي ملفات لعبتك، وأضف وصفاً وصورة غلاف. الألعاب المنشورة تُنزّل إلى جهاز اللاعب ولا تعمل داخل الموقع.</p>
+    <form id="publish-form" class="form-grid">
+      <label>اسم اللعبة<input id="game-title" required minlength="2" maxlength="80" placeholder="اسم لعبتك"></label>
+      <label>التصنيف<select id="game-category"><option value="other">أخرى</option><option value="adventure">مغامرات</option><option value="puzzle">ألغاز</option><option value="racing">سباق</option><option value="arcade">أركيد</option><option value="strategy">استراتيجية</option></select></label>
+      <label class="wide">وصف اللعبة<textarea id="game-description" maxlength="2000" rows="4" placeholder="اكتب وصفاً واضحاً للعبة"></textarea></label>
+      <label class="wide">رابط صورة الغلاف (اختياري)<input id="game-cover" type="url" placeholder="https://..."></label>
+      <label class="wide">ملف اللعبة ZIP (حد أقصى 100MB)<input id="game-zip" type="file" accept=".zip,application/zip" required></label>
+      <div class="wide"><button type="submit">إرسال اللعبة للمراجعة</button><span id="publish-status" class="status"></span></div>
     </form>
-  </div>
-</div>
+    <p class="tiny muted">تُنشر اللعبة بعد موافقة الإدارة. لا ترفع ملفات لا تملك حقوقها أو ملفات ضارة.</p>
+  </section>
 
-<script>
-const STORAGE_KEY = 'alpha_dev_games';
+  <section id="profile" class="panel">
+    <div class="section-head"><div><span class="eyebrow">حسابك</span><h2>ملف المطوّر</h2></div></div>
+    <div id="profile-area" class="muted">سجّل الدخول لعرض ملفك وتعديله.</div>
+  </section>
+  <section class="notice"><b>معلومة:</b> هذا مشروع مصدر كامل يحتاج إعداد مشروع Supabase ومزوّد Google OAuth قبل أن يعمل على الإنترنت. راجع ملف README_AR.md داخل الحزمة.</section>
+</main>
+<footer>Alpha.Dev © <span id="year"></span> — منصة الألعاب والمطورين العرب</footer>
 
-function getGames(){
-  try{return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []}
-  catch{return []}
-}
+<dialog id="auth-dialog" class="dialog">
+  <form method="dialog"><button class="x" aria-label="إغلاق">×</button></form>
+  <h2>أهلاً بك في Alpha.Dev</h2><p class="muted">سجّل الدخول باستخدام حساب Google.</p>
+  <button id="google-login" class="google-button">🌐 المتابعة باستخدام Google</button>
+  <p id="auth-status" class="tiny muted"></p>
+</dialog>
 
-function safeUrl(value){
-  try{
-    const url = new URL(value);
-    return ['http:','https:'].includes(url.protocol) ? url.href : '';
-  }catch{return ''}
-}
+<dialog id="profile-dialog" class="dialog">
+  <form id="profile-form">
+    <h2>أهلاً وسهلاً بك! 👋</h2><p class="muted">قبل أن تبدأ، أخبرنا كيف نعرض اسمك في المنصة.</p>
+    <label>اسمك الظاهر<input id="display-name" required minlength="2" maxlength="50"></label>
+    <label>اسم المستخدم الفريد<input id="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" placeholder="مثلاً: ahmad_dev"><small>3 إلى 20 حرفاً إنجليزياً أو رقماً أو _</small></label>
+    <button type="submit">حفظ ومتابعة</button><p id="profile-status" class="tiny muted"></p>
+  </form>
+</dialog>
 
-function renderGames(){
-  const list = document.getElementById('gamesList');
-  const query = document.getElementById('search').value.toLowerCase();
-  const games = getGames().filter(g =>
-    g.name.toLowerCase().includes(query) ||
-    g.desc.toLowerCase().includes(query)
-  );
-
-  document.getElementById('gameCount').textContent = getGames().length;
-  list.replaceChildren();
-
-  if(!games.length){
-    const empty = document.createElement('div');
-    empty.className='empty';
-    empty.textContent='لا توجد ألعاب هنا بعد. أضف لعبتك الأولى! 🎮';
-    list.append(empty);
-    return;
-  }
-
-  games.forEach(g=>{
-    const card=document.createElement('article');
-    card.className='game';
-
-    const cover=document.createElement('div');
-    cover.className='cover';
-    const image=safeUrl(g.image);
-    if(image) cover.style.backgroundImage=`url("${image.replace(/["\\]/g,'')}")`;
-    else cover.textContent='🎮';
-
-    const info=document.createElement('div');
-    info.className='game-info';
-
-    const title=document.createElement('h3');
-    title.textContent=g.name;
-
-    const desc=document.createElement('p');
-    desc.textContent=g.desc;
-
-    const bottom=document.createElement('div');
-    bottom.className='game-bottom';
-
-    const label=document.createElement('small');
-    label.textContent='ALPHA GAME';
-
-    const play=document.createElement('button');
-    play.className='play';
-    play.textContent='العب الآن ▶';
-    play.addEventListener('click',()=>{
-      const url=safeUrl(g.url);
-      if(url) window.open(url,'_blank','noopener,noreferrer');
-      else alert('رابط اللعبة غير صالح');
-    });
-
-    bottom.append(label,play);
-    info.append(title,desc,bottom);
-    card.append(cover,info);
-    list.append(card);
-  });
-}
-
-function openModal(){
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-}
-
-document.getElementById('gameForm').addEventListener('submit',e=>{
-  e.preventDefault();
-
-  const name=document.getElementById('gameName').value.trim();
-  const desc=document.getElementById('gameDesc').value.trim();
-  const image=document.getElementById('gameImage').value.trim();
-  const url=safeUrl(document.getElementById('gameUrl').value.trim());
-
-  if(!name || !desc || !url){
-    alert('يرجى إدخال المعلومات المطلوبة ورابط صحيح');
-    return;
-  }
-
-  const games=getGames();
-  games.unshift({name,desc,image:safeUrl(image),url});
-
-  try{
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(games));
-  }catch{
-    alert('مساحة التخزين ممتلئة. حاول استخدام صورة أصغر.');
-    return;
-  }
-
-  e.target.reset();
-  closeModal();
-  renderGames();
-});
-
-renderGames();
-</script>
-</body>
-</html>
+<dialog id="game-dialog" class="dialog game-dialog">
+  <form method="dialog"><button class="x" aria-label="إغلاق">×</button></form>
+  <div id="game-detail"></div>
+</dialog>
+</body></html>
