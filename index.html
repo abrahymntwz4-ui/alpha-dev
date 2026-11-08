@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alpha.Dev | ألعابي</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080b12;color:#f8fafc;font-family:Arial,sans-serif}
+header{padding:18px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222936}
+.logo{font-size:25px;font-weight:900;direction:ltr}.logo span{color:#a3ff12}
+header a{color:#ddd;text-decoration:none}
+.hero{text-align:center;padding:75px 20px;background:radial-gradient(ellipse at top,#29320d,transparent 65%)}
+.hero h1{font-size:clamp(38px,8vw,64px);margin:15px 0}.hero h1 span{color:#a3ff12}
+.hero p{color:#aab2c0;line-height:1.9}
+button{border:0;border-radius:30px;background:#a3ff12;color:#10140a;font-weight:bold;padding:13px 25px;cursor:pointer}
+section{padding:35px 7%}.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+input{background:#141b27;border:1px solid #303b4d;border-radius:10px;padding:12px;color:white}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:20px}
+.card{background:#121925;border:1px solid #263143;border-radius:16px;padding:18px}
+.art{height:130px;border-radius:12px;background:linear-gradient(135deg,#27320c,#182b42);display:grid;place-items:center;font-size:48px}
+.card p{color:#aab2c0;line-height:1.7}.card a{display:inline-block;margin-top:8px;color:#a3ff12}
+.empty{color:#9ca3af;text-align:center;padding:30px;border:1px dashed #394354;border-radius:12px}
+footer{text-align:center;padding:30px;color:#8892a3;border-top:1px solid #222936}
+</style>
+</head>
+<body>
+<header><div class="logo">ALPHA<span>.DEV</span></div><a href="#games">الألعاب</a></header>
+<div class="hero">
+<div>منصة مطوري الألعاب المستقلين</div>
+<h1>ألعابك، <span>عالمك.</span></h1>
+<p>مرحباً بك في Alpha.Dev — مكان عرض ألعابك ومشاركتها مع العالم.</p>
+<button onclick="document.querySelector('#games').scrollIntoView({behavior:'smooth'})">اكتشف الألعاب</button>
+</div>
+<section id="games">
+<div class="heading"><div><h2>🎮 مكتبة الألعاب</h2><p style="color:#9ca3af">أضف ألعابك وروابط تشغيلها هنا</p></div><input id="search" placeholder="ابحث عن لعبة..." oninput="render()"></div>
+<div class="games" id="list"></div>
+</section>
+<footer>© 2026 ALPHA.DEV</footer>
+<script>
+const games=[
+{name:"لعبتي الأولى",desc:"هذا مكان تجريبي. عدّل بيانات اللعبة في ملف الموقع لإضافة لعبتك.",url:""},
+];
+function render(){
+ const q=document.getElementById('search').value.toLowerCase(),list=document.getElementById('list');list.innerHTML='';
+ const filtered=games.filter(g=>g.name.toLowerCase().includes(q));
+ if(!filtered.length){list.innerHTML='<div class="empty">لا توجد ألعاب مطابقة حالياً.</div>';return}
+ filtered.forEach(g=>{
+  const card=document.createElement('div');card.className='card';
+  const art=document.createElement('div');art.className='art';art.textContent='🎮';
+  const h=document.createElement('h3');h.textContent=g.name;
+  const p=document.createElement('p');p.textContent=g.desc;
+  card.append(art,h,p);
+  if(g.url){const a=document.createElement('a');a.href=g.url;a.target='_blank';a.rel='noopener';a.textContent='العب الآن ←';card.append(a)}
+  list.append(card);
+ });
+}
+render();
+</script>
+</body>
+</html>
