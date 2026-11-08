@@ -1,0 +1,12 @@
+# قائمة تجهيز Alpha.Dev
+- [ ] إنشاء مشروع Supabase.
+- [ ] تشغيل `supabase/schema.sql` كاملًا.
+- [ ] إدخال Project URL وPublishable/anon key العامين في `config.js`.
+- [ ] إعداد Google OAuth وإضافة Callback URL.
+- [ ] نشر `download-game` و`admin-action`.
+- [ ] رفع محتويات المشروع إلى جذر مستودع GitHub.
+- [ ] ضبط GitHub Pages على GitHub Actions.
+- [ ] إضافة رابط الموقع إلى Supabase Redirect URLs.
+- [ ] اختبار تسجيل الدخول بحسابين مختلفين.
+- [ ] اختبار رفع ZIP ورفض ملف غير ZIP أو كبير.
+- [ ] مراجعة RLS والأمان وفحص الملفات قبل الإطلاق العام.
