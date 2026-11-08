@@ -3,74 +3,177 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Alpha.Dev — منصة الألعاب والمطورين العرب">
-  <title>Alpha.Dev | منصة الألعاب العربية</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script defer src="app.js"></script>
+  <meta name="theme-color" content="#090b18">
+  <title>Alpha.Dev | عالم الألعاب العربية</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#090b18;--panel:#111528;--panel2:#151a30;--line:#292f4d;--purple:#8b35f5;--purple2:#bd54f5;--text:#f7f4ff;--muted:#a6a8c1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#28204e 0,#101225 42%,var(--bg) 80%);color:var(--text);font-family:'Cairo',Tahoma,Arial,sans-serif;min-height:100vh}a{color:inherit;text-decoration:none}button,input{font:inherit}.topbar{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,3vw,48px);border-bottom:1px solid #292943;background:#0b0d1ceF;position:sticky;top:0;z-index:20;backdrop-filter:blur(16px)}.brand{display:flex;align-items:center;gap:10px;font-size:25px;font-weight:900;direction:ltr;white-space:nowrap}.brand-mark{font-size:31px}.brand-dot{color:#a64aff}.main-nav{display:flex;align-items:center;gap:10px}.main-nav a{padding:10px 19px;border-radius:11px;color:#d8d6e8;font-weight:700}.main-nav a:hover,.main-nav a.active{background:#292044;color:white}.account-actions{display:flex;gap:10px;align-items:center}.btn{border:0;border-radius:11px;padding:10px 20px;font-weight:800;cursor:pointer;transition:.2s}.btn:hover,.download-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn-primary{background:linear-gradient(135deg,#7130e7,#a43af5);color:white;box-shadow:0 7px 22px #842df044}.btn-outline{background:transparent;border:1px solid #9848ee;color:white}.icon-btn,.menu-toggle{background:transparent;border:0;color:white;font-size:30px;cursor:pointer}.menu-toggle{display:none}.page{width:min(1540px,calc(100% - 48px));margin:18px auto 34px}.hero{min-height:300px;border:1px solid #5423a5;border-radius:18px;overflow:hidden;position:relative;display:flex;align-items:center;padding:36px 5%;background:radial-gradient(ellipse at 76% 45%,#7b28d7 0,#35116e 32%,#130d31 67%,#0d1022 100%);box-shadow:inset 0 0 70px #7c2ae533}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0d1c 0%,#160d36cc 48%,transparent 100%);pointer-events:none}.hero-content{position:relative;z-index:2;max-width:760px}.eyebrow{color:#d99cff;font-weight:800;margin:0 0 6px}.hero h1{font-size:clamp(32px,4vw,58px);margin:0;line-height:1.3;font-weight:900}.hero h1 span{color:#c15cff}.hero-subtitle{font-size:17px;color:#e4dff1;margin:8px 0 20px}.search-box{display:flex;gap:8px;background:#111426;border:1px solid #555071;border-radius:16px;padding:6px;max-width:760px}.search-box input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;padding:8px 14px}.search-box input::placeholder{color:#a5a2b9}.hero-tags{display:flex;gap:12px;align-items:center;margin:12px 8px 0;color:#d3c8e9;font-size:13px}.hero-tags i{color:#a64aff}.hero-art{position:absolute;left:4%;top:0;bottom:0;width:38%;display:grid;place-items:center;opacity:.95}.controller{font-size:clamp(100px,16vw,210px);filter:drop-shadow(0 0 34px #bb54ff);transform:rotate(-13deg);z-index:1}.orb{position:absolute;border-radius:50%;filter:blur(2px)}.orb-one{width:240px;height:240px;background:#a12cff33;left:10%;top:15%}.orb-two{width:150px;height:150px;background:#ff4acb22;right:10%;bottom:4%}.art-caption{position:absolute;bottom:18px;letter-spacing:5px;font-size:10px;color:#e3c6ff}.feature-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:20px 0 24px}.feature{min-height:118px;border-radius:13px;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid #ffffff22;box-shadow:0 8px 20px #0002;transition:.2s}.feature:hover{transform:translateY(-3px);filter:brightness(1.12)}.feature-icon{font-size:30px;margin-bottom:2px}.feature strong{font-size:19px}.feature small{font-size:12px;color:#f1eafa}.feature-publish{background:linear-gradient(135deg,#4520a4,#7133bc)}.feature-games{background:linear-gradient(135deg,#1745a3,#376acb)}.feature-devs{background:linear-gradient(135deg,#14765e,#4aa76c)}.feature-ranks{background:linear-gradient(135deg,#9a5718,#d18a22)}.content-layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.games-panel,.side-panel{background:linear-gradient(145deg,#151a2d,#101426);border:1px solid var(--line);border-radius:15px;padding:16px}.section-heading,.side-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.section-heading>div{display:flex;align-items:center;gap:8px}.section-heading h2,.side-title h2{font-size:20px;margin:0}.heading-icon{font-size:23px}.text-link,.side-title a{font-size:12px;color:#c77bff;font-weight:800}.game-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.game-card{overflow:hidden;border:1px solid #303754;border-radius:12px;background:#0d1121;min-width:0}.game-cover{height:145px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;position:relative;overflow:hidden}.game-cover:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#090b18aa,transparent 75%)}.game-cover span,.game-cover b{position:relative;z-index:1}.game-cover span{font-size:54px;filter:drop-shadow(0 4px 12px #0008)}.game-cover b{font-size:12px;letter-spacing:2px}.cover-one{background:radial-gradient(circle at 65% 35%,#fa477c,#6021a5 48%,#111d45)}.cover-two{background:radial-gradient(circle at 55% 35%,#ff8a42,#a12b4e 45%,#211342)}.cover-three{background:radial-gradient(circle at 55% 35%,#6bc7a3,#236b86 48%,#14244a)}.cover-four{background:radial-gradient(circle at 55% 35%,#53b8ff,#313cba 48%,#28164f)}.game-info{padding:10px}.game-info h3{font-size:15px;margin:0 0 3px}.game-info p{font-size:11px;color:var(--muted);margin:0 0 9px}.game-meta{display:flex;justify-content:space-between;align-items:center;gap:5px;font-size:12px}.download-btn{background:#6326c5;color:white;border:0;border-radius:8px;padding:7px 9px;font-size:11px;font-weight:800;cursor:pointer;white-space:nowrap}.side-column{display:grid;gap:16px}.side-panel{padding:13px}.side-title{border-bottom:1px solid #303550;padding-bottom:10px}.side-title h2{font-size:17px;color:#c16aff}.developer{display:flex;align-items:center;gap:10px;padding:9px 3px;border-bottom:1px solid #252b43}.developer:last-child{border-bottom:0}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#6c4b9c,#c08b68);font-size:12px;font-weight:900}.avatar-blue{background:linear-gradient(135deg,#246a9b,#83c8ef)}.avatar-orange{background:linear-gradient(135deg,#5b4d46,#d18c54)}.developer div{display:grid;flex:1}.developer b{font-size:13px}.developer small{font-size:11px;color:var(--muted)}.crown{font-size:18px}.rank-row{display:flex;align-items:center;gap:10px;padding:8px 5px;border-bottom:1px solid #252b43;font-size:13px;font-weight:700}.rank-row:last-child{border:0}.rank-row span{font-size:18px}.publish-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px;padding:18px 22px;border:1px solid #48306c;border-radius:14px;background:linear-gradient(100deg,#1b1531,#12172b)}.publish-panel>div{display:flex;align-items:center;gap:14px}.publish-icon{font-size:35px}.publish-panel h2{font-size:18px;margin:0}.publish-panel p{margin:2px 0 0;color:var(--muted);font-size:13px}.footer{border-top:1px solid #292e49;background:#0a0c19;padding:22px clamp(18px,3vw,48px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.footer .brand{font-size:20px}.footer .brand-mark{font-size:26px}.footer-links{display:flex;gap:22px;flex-wrap:wrap;color:#b9b6ca;font-size:12px}.footer p{font-size:12px;color:#c5b5df;margin:0}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#292044;border:1px solid #8f49d4;padding:10px 18px;border-radius:10px;z-index:50;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}.empty-state{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:1000px){.content-layout{grid-template-columns:1fr}.side-column{grid-template-columns:1fr 1fr}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{width:34%;opacity:.55}.main-nav{gap:0}.main-nav a{padding:9px 12px}}
+@media(max-width:680px){.topbar{height:64px;padding:0 14px}.brand{font-size:21px;gap:6px}.brand-mark{font-size:26px}.main-nav{display:none;position:absolute;top:63px;right:10px;left:10px;background:#111528;border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:0 14px 35px #0008;flex-direction:column;align-items:stretch}.main-nav.open{display:flex}.main-nav a{padding:10px 14px}.account-actions{gap:6px}.account-actions .btn{padding:7px 10px;font-size:11px}.icon-btn{font-size:24px}.menu-toggle{display:block;font-size:22px;padding:4px}.page{width:calc(100% - 24px);margin:12px auto 24px}.hero{min-height:270px;padding:22px 16px;align-items:flex-start}.hero:before{background:linear-gradient(90deg,#0b0d1ceF,#170d35d9 70%,#170d3566)}.hero-content{width:100%}.eyebrow{font-size:11px}.hero h1{font-size:31px;max-width:340px}.hero-subtitle{font-size:13px;line-height:1.8;max-width:340px;margin:8px 0 14px}.search-box{border-radius:12px}.search-box input{font-size:12px;padding:7px}.search-box .btn{padding:8px 13px;font-size:12px}.hero-art{width:58%;left:-12%;opacity:.22}.controller{font-size:150px}.hero-tags{font-size:11px;margin-top:10px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 16px}.feature{min-height:104px;padding:11px 6px}.feature-icon{font-size:25px}.feature strong{font-size:15px}.feature small{font-size:10px}.content-layout{gap:12px}.games-panel{padding:11px}.section-heading h2{font-size:17px}.game-grid{gap:9px}.game-cover{height:112px}.game-cover span{font-size:42px}.game-cover b{font-size:9px}.game-info{padding:8px}.game-info h3{font-size:13px}.game-info p{font-size:10px}.game-meta{font-size:10px;flex-wrap:wrap}.download-btn{font-size:10px;padding:6px 7px}.side-column{grid-template-columns:1fr;gap:11px}.side-panel{padding:11px}.side-title h2{font-size:15px}.publish-panel{padding:13px;align-items:flex-start;flex-direction:column}.publish-panel h2{font-size:15px}.publish-panel p{font-size:11px}.publish-panel .btn{width:100%}.footer{justify-content:center;text-align:center;gap:12px;padding:18px 12px}.footer-links{justify-content:center;gap:12px 18px}.footer p{width:100%}}
+@media(max-width:360px){.account-actions .btn-outline{display:none}.hero h1{font-size:27px}.feature strong{font-size:14px}.game-meta{align-items:flex-start;flex-direction:column}.download-btn{width:100%}}
+
+
+.modal-backdrop{position:fixed;inset:0;background:#03040bdc;backdrop-filter:blur(8px);z-index:100;display:grid;place-items:center;padding:16px;overflow:auto}
+.modal-backdrop[hidden]{display:none}.modal-card{position:relative;width:min(620px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#191d35,#0e1224);border:1px solid #7041a7;border-radius:18px;padding:26px;box-shadow:0 25px 90px #000b}.modal-close{position:absolute;left:14px;top:10px;border:0;background:#2b2443;color:#fff;width:34px;height:34px;border-radius:10px;font-size:24px;cursor:pointer}.modal-card h2{margin:0 40px 7px 0;font-size:24px}.modal-lead{color:#b9b5ce;margin:0 0 20px;font-size:13px;line-height:1.8}.modal-form{display:grid;gap:13px}.modal-form label{display:grid;gap:6px;font-size:13px;font-weight:700}.modal-form input,.modal-form textarea,.modal-form select{width:100%;border:1px solid #343b5b;border-radius:10px;background:#0a0e1e;color:white;padding:11px 12px;outline:none}.modal-form input:focus,.modal-form textarea:focus,.modal-form select:focus{border-color:#a34bf0}.modal-form textarea{min-height:90px;resize:vertical}.modal-note{border:1px solid #55406e;background:#211936;border-radius:10px;padding:11px;color:#d6c9e9;font-size:12px;line-height:1.8}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:5px}.detail-cover{height:145px;border-radius:12px;display:grid;place-items:center;font-size:70px;background:radial-gradient(circle at 50% 40%,#8c37c8,#25164d 65%,#10152c);margin:16px 0}.detail-meta{display:flex;gap:10px;flex-wrap:wrap;color:#d7c9eb;font-size:12px;margin:12px 0}.detail-meta span{background:#28213f;padding:6px 10px;border-radius:20px}.file-hint{color:#b5b1c7;font-size:11px;font-weight:400}
+@media(max-width:600px){.modal-card{padding:22px 16px}.modal-card h2{font-size:20px}.modal-backdrop{align-items:end;padding:8px}.modal-card{max-height:94vh;border-radius:18px 18px 12px 12px}}
+
+</style>
 </head>
 <body>
 <header class="topbar">
-  <a class="brand" href="#">Alpha<span>.Dev</span></a>
-  <nav><a href="#games">الألعاب</a><a href="#publish">انشر لعبة</a><a href="#profile">ملفي</a></nav>
-  <div class="header-actions"><span id="user-chip" class="muted"></span><button id="auth-button">تسجيل الدخول</button></div>
+  <a class="brand" href="#"><span class="brand-mark">🎮</span><span>Alpha<span class="brand-dot">.</span>Dev</span></a>
+  <nav class="main-nav" id="mainNav" aria-label="التنقل الرئيسي">
+    <a class="active" href="#home">الرئيسية</a><a href="#games">الألعاب</a>
+    <a href="#developers">المطورون</a><a href="#ranks">الرتب</a>
+  </nav>
+  <div class="account-actions"><button class="icon-btn" aria-label="بحث" id="focusSearch">⌕</button><button class="btn btn-outline" id="loginBtn">دخول</button><button class="btn btn-primary" id="signupBtn">إنشاء حساب</button></div>
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
 </header>
-<main class="container">
+
+<main id="home" class="page">
   <section class="hero">
-    <div><span class="eyebrow">مجتمع المطورين العرب</span><h1>ألعابك تستحق أن يكتشفها العالم.</h1>
-      <p>اكتشف ألعاباً جديدة، شارك لعبتك، وابنِ ملفك كمطوّر على Alpha.Dev.</p>
-      <a class="button" href="#games">اكتشف الألعاب</a>
-    </div><div class="hero-art" aria-hidden="true">🎮</div>
-  </section>
-
-  <section id="games">
-    <div class="section-head"><div><span class="eyebrow">المكتبة</span><h2>الألعاب المنشورة</h2></div>
-      <input id="search" class="search" placeholder="ابحث عن لعبة أو مطوّر..." aria-label="بحث">
+    <div class="hero-content">
+      <p class="eyebrow">منصة الألعاب العربية للمبدعين</p>
+      <h1>مرحباً بك في <span>Alpha.Dev</span></h1>
+      <p class="hero-subtitle">اكتشف ألعاباً جديدة، شارك إبداعك، وكن جزءاً من مجتمع المطورين.</p>
+      <form class="search-box" id="searchForm">
+        <input id="searchInput" type="search" placeholder="ابحث عن لعبة، مطور، أو كلمة مفتاحية..." aria-label="ابحث">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </form>
+      <div class="hero-tags"><span>اكتشف</span><i>•</i><span>العب</span><i>•</i><span>شارك</span><i>•</i><span>تواصل</span></div>
     </div>
-    <div id="game-list" class="game-grid"><div class="empty">حمّل الصفحة لعرض الألعاب المنشورة.</div></div>
+    <div class="hero-art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="controller">🎮</div><div class="art-caption">PLAY · CREATE · SHARE</div></div>
   </section>
 
-  <section id="publish" class="panel">
-    <div class="section-head"><div><span class="eyebrow">للمطورين</span><h2>انشر لعبتك</h2></div></div>
-    <p class="muted">ارفع ملف ZIP يحتوي ملفات لعبتك، وأضف وصفاً وصورة غلاف. الألعاب المنشورة تُنزّل إلى جهاز اللاعب ولا تعمل داخل الموقع.</p>
-    <form id="publish-form" class="form-grid">
-      <label>اسم اللعبة<input id="game-title" required minlength="2" maxlength="80" placeholder="اسم لعبتك"></label>
-      <label>التصنيف<select id="game-category"><option value="other">أخرى</option><option value="adventure">مغامرات</option><option value="puzzle">ألغاز</option><option value="racing">سباق</option><option value="arcade">أركيد</option><option value="strategy">استراتيجية</option></select></label>
-      <label class="wide">وصف اللعبة<textarea id="game-description" maxlength="2000" rows="4" placeholder="اكتب وصفاً واضحاً للعبة"></textarea></label>
-      <label class="wide">رابط صورة الغلاف (اختياري)<input id="game-cover" type="url" placeholder="https://..."></label>
-      <label class="wide">ملف اللعبة ZIP (حد أقصى 100MB)<input id="game-zip" type="file" accept=".zip,application/zip" required></label>
-      <div class="wide"><button type="submit">إرسال اللعبة للمراجعة</button><span id="publish-status" class="status"></span></div>
-    </form>
-    <p class="tiny muted">تُنشر اللعبة بعد موافقة الإدارة. لا ترفع ملفات لا تملك حقوقها أو ملفات ضارة.</p>
+  <section class="feature-grid" aria-label="أقسام الموقع">
+    <a class="feature feature-publish" href="#publish"><span class="feature-icon">🚀</span><strong>انشر لعبتك</strong><small>شارك لعبتك مع المجتمع</small></a>
+    <a class="feature feature-games" href="#games"><span class="feature-icon">🎮</span><strong>استكشف الألعاب</strong><small>اكتشف ألعاباً جديدة ومميزة</small></a>
+    <a class="feature feature-devs" href="#developers"><span class="feature-icon">👥</span><strong>المطورون</strong><small>تعرّف على صناع الألعاب</small></a>
+    <a class="feature feature-ranks" href="#ranks"><span class="feature-icon">🏆</span><strong>الرتب</strong><small>ارتقِ في سلم الترتيب</small></a>
   </section>
 
-  <section id="profile" class="panel">
-    <div class="section-head"><div><span class="eyebrow">حسابك</span><h2>ملف المطوّر</h2></div></div>
-    <div id="profile-area" class="muted">سجّل الدخول لعرض ملفك وتعديله.</div>
+  <div class="content-layout">
+    <section class="games-panel" id="games">
+      <div class="section-heading"><div><span class="heading-icon">🎮</span><h2>أحدث الألعاب</h2></div><a href="#games" class="text-link">عرض الكل ←</a></div>
+      <div class="game-grid" id="gameGrid">
+        <article class="game-card" data-search="معركة الأبطال gamemaster أكشن">
+          <div class="game-cover cover-one"><span>⚔️</span><b>HEROES ARENA</b></div>
+          <div class="game-info"><h3>معركة الأبطال</h3><p>من تطوير: GameMaster</p><div class="game-meta"><span>⭐ 4.6</span><button class="download-btn" data-game="معركة الأبطال">تفاصيل اللعبة ↗</button></div></div>
+        </article>
+        <article class="game-card" data-search="مغامرات التنين devpro مغامرات">
+          <div class="game-cover cover-two"><span>🐉</span><b>DRAGON QUEST</b></div>
+          <div class="game-info"><h3>مغامرات التنين</h3><p>من تطوير: DevPro</p><div class="game-meta"><span>⭐ 4.7</span><button class="download-btn" data-game="مغامرات التنين">تفاصيل اللعبة ↗</button></div></div>
+        </article>
+        <article class="game-card" data-search="عالم المكعبات alphastudio بناء">
+          <div class="game-cover cover-three"><span>🧱</span><b>BLOCK WORLD</b></div>
+          <div class="game-info"><h3>عالم المكعبات</h3><p>من تطوير: AlphaStudio</p><div class="game-meta"><span>⭐ 4.9</span><button class="download-btn" data-game="عالم المكعبات">تفاصيل اللعبة ↗</button></div></div>
+        </article>
+        <article class="game-card" data-search="سباق السرعة gamemaster سيارات">
+          <div class="game-cover cover-four"><span>🏎️</span><b>RUSH RACING</b></div>
+          <div class="game-info"><h3>سباق السرعة</h3><p>من تطوير: GameMaster</p><div class="game-meta"><span>⭐ 4.8</span><button class="download-btn" data-game="سباق السرعة">تفاصيل اللعبة ↗</button></div></div>
+        </article>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>ما لقينا ألعاب تطابق بحثك.</p>
+    </section>
+
+    <aside class="side-column">
+      <section class="side-panel" id="developers"><div class="side-title"><h2>👑 أبرز المطورين</h2><a href="#developers">عرض الكل</a></div>
+        <div class="developer"><span class="avatar">GM</span><div><b>GameMaster</b><small>مطور مميز</small></div><span class="crown">👑</span></div>
+        <div class="developer"><span class="avatar avatar-blue">AS</span><div><b>AlphaStudio</b><small>مطور محترف</small></div><span class="crown">♛</span></div>
+        <div class="developer"><span class="avatar avatar-orange">DP</span><div><b>DevPro</b><small>مطور مبدع</small></div><span class="crown">♛</span></div>
+      </section>
+      <section class="side-panel" id="ranks"><div class="side-title"><h2>🏅 أحدث الرتب</h2><a href="#ranks">كل الرتب</a></div>
+        <div class="rank-row"><span>⭐</span> مطور مميز</div><div class="rank-row"><span>💎</span> مطور محترف</div><div class="rank-row"><span>🔮</span> مطور مبدع</div>
+      </section>
+    </aside>
+  </div>
+
+  <section class="publish-panel" id="publish">
+    <div><span class="publish-icon">📦</span><div><h2>عندك لعبة من تطويرك؟</h2><p>جهّز لعبتك وشاركها مع مجتمع Alpha.Dev.</p></div></div>
+    <button class="btn btn-primary" id="publishBtn">ابدأ نشر لعبتك</button>
   </section>
-  <section class="notice"><b>معلومة:</b> هذا مشروع مصدر كامل يحتاج إعداد مشروع Supabase ومزوّد Google OAuth قبل أن يعمل على الإنترنت. راجع ملف README_AR.md داخل الحزمة.</section>
 </main>
-<footer>Alpha.Dev © <span id="year"></span> — منصة الألعاب والمطورين العرب</footer>
 
-<dialog id="auth-dialog" class="dialog">
-  <form method="dialog"><button class="x" aria-label="إغلاق">×</button></form>
-  <h2>أهلاً بك في Alpha.Dev</h2><p class="muted">سجّل الدخول باستخدام حساب Google.</p>
-  <button id="google-login" class="google-button">🌐 المتابعة باستخدام Google</button>
-  <p id="auth-status" class="tiny muted"></p>
-</dialog>
+<footer class="footer"><a class="brand" href="#"><span class="brand-mark">🎮</span><span>Alpha<span class="brand-dot">.</span>Dev</span></a><div class="footer-links"><a href="#home">حول الموقع</a><a href="#home">الخصوصية</a><a href="#home">الشروط والأحكام</a><a href="#home">اتصل بنا</a></div><p>معاً نصنع عالم ألعاب أفضل 💜</p></footer>
 
-<dialog id="profile-dialog" class="dialog">
-  <form id="profile-form">
-    <h2>أهلاً وسهلاً بك! 👋</h2><p class="muted">قبل أن تبدأ، أخبرنا كيف نعرض اسمك في المنصة.</p>
-    <label>اسمك الظاهر<input id="display-name" required minlength="2" maxlength="50"></label>
-    <label>اسم المستخدم الفريد<input id="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" placeholder="مثلاً: ahmad_dev"><small>3 إلى 20 حرفاً إنجليزياً أو رقماً أو _</small></label>
-    <button type="submit">حفظ ومتابعة</button><p id="profile-status" class="tiny muted"></p>
-  </form>
-</dialog>
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="إغلاق">×</button>
+    <div id="modalContent"></div>
+  </section>
+</div>
 
-<dialog id="game-dialog" class="dialog game-dialog">
-  <form method="dialog"><button class="x" aria-label="إغلاق">×</button></form>
-  <div id="game-detail"></div>
-</dialog>
-</body></html>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const $ = (id) => document.getElementById(id);
+const toast = (message) => {
+  const el = $("toast"); el.textContent = message; el.classList.add("show");
+  clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(() => el.classList.remove("show"), 2600);
+};
+const backdrop = $("modalBackdrop"), modalContent = $("modalContent");
+function openModal(content){ modalContent.innerHTML = content; backdrop.hidden = false; document.body.style.overflow = "hidden"; }
+function closeModal(){ backdrop.hidden = true; modalContent.innerHTML = ""; document.body.style.overflow = ""; }
+$("modalClose").addEventListener("click", closeModal);
+backdrop.addEventListener("click", e => { if(e.target === backdrop) closeModal(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeModal(); });
+
+const nav = document.querySelector(".main-nav");
+$("menuToggle").addEventListener("click", () => nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+$("focusSearch").addEventListener("click", () => { $("searchInput").focus(); window.scrollTo({top:0,behavior:"smooth"}); });
+$("searchForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const term = $("searchInput").value.trim().toLocaleLowerCase("ar");
+  let shown = 0;
+  document.querySelectorAll(".game-card").forEach(card => {
+    const match = !term || (card.dataset.search + " " + card.innerText).toLocaleLowerCase("ar").includes(term);
+    card.hidden = !match; if(match) shown++;
+  });
+  $("emptyState").hidden = shown !== 0;
+});
+
+const games = {
+ "معركة الأبطال": {emoji:"⚔️", developer:"GameMaster", rating:"4.6", description:"لعبة أكشن وتحديات تجريبية ضمن عرض Alpha.Dev."},
+ "مغامرات التنين": {emoji:"🐉", developer:"DevPro", rating:"4.7", description:"رحلة مغامرات خيالية تجريبية."},
+ "عالم المكعبات": {emoji:"🧱", developer:"AlphaStudio", rating:"4.9", description:"ابنِ واستكشف عالماً من المكعبات."},
+ "سباق السرعة": {emoji:"🏎️", developer:"GameMaster", rating:"4.8", description:"تحديات سباق سريعة وممتعة."}
+};
+document.querySelectorAll(".download-btn").forEach(btn => btn.addEventListener("click", () => {
+ const name = btn.dataset.game, game = games[name];
+ openModal(`<h2 id="modalTitle">${name}</h2><p class="modal-lead">تفاصيل اللعبة</p><div class="detail-cover">${game.emoji}</div><div class="detail-meta"><span>⭐ ${game.rating}</span><span>المطور: ${game.developer}</span><span>حالة: معاينة</span></div><p>${game.description}</p><div class="modal-note">هذه بيانات عرض تجريبية حالياً. صفحة التفاصيل النهائية ستعرض وصف اللعبة وصورها وإصدارها وحجمها ورابط تنزيل آمن بعد ربط قاعدة البيانات والتخزين.</div><div class="modal-actions"><button class="btn btn-primary" id="detailOk">حسناً</button></div>`);
+ $("detailOk").addEventListener("click", closeModal);
+}));
+$("publishBtn").addEventListener("click", () => {
+ openModal(`<h2 id="modalTitle">🚀 نشر لعبة جديدة</h2><p class="modal-lead">املأ معلومات لعبتك. النموذج حالياً للمعاينة فقط إلى أن نربط التخزين وقاعدة البيانات.</p>
+ <form class="modal-form" id="publishForm">
+ <label>اسم اللعبة<input name="title" required maxlength="70" placeholder="مثلاً: مغامرة الأبطال"></label>
+ <label>وصف اللعبة<textarea name="description" required maxlength="1200" placeholder="اكتب نبذة عن لعبتك..."></textarea></label>
+ <label>التصنيف<select name="category"><option>أكشن</option><option>مغامرات</option><option>ألغاز</option><option>سباق</option><option>استراتيجية</option><option>أخرى</option></select></label>
+ <label>ملف اللعبة ZIP<input name="gamefile" type="file" accept=".zip,application/zip" required><span class="file-hint">الحد المقترح بالواجهة 600 ميغابايت؛ الرفع الفعلي غير متاح قبل إعداد خدمة تخزين تدعم هذا الحجم.</span></label>
+ <div class="modal-note">لا يتم رفع الملف أو حفظه على الإنترنت الآن. لا تختَر ملفاً خاصاً أو يحتوي معلومات شخصية.</div>
+ <div class="modal-actions"><button class="btn btn-primary" type="submit">معاينة بيانات النشر</button><button class="btn btn-outline" type="button" id="cancelPublish">إلغاء</button></div></form>`);
+ $("cancelPublish").addEventListener("click", closeModal);
+ $("publishForm").addEventListener("submit", e => {
+   e.preventDefault(); const f = e.currentTarget; const file = f.gamefile.files[0];
+   if(file && file.size > 600*1024*1024){ toast("حجم الملف أكبر من 600 ميغابايت."); return; }
+   const title = f.title.value.trim();
+   modalContent.innerHTML = `<h2 id="modalTitle">تم تجهيز المعاينة</h2><p class="modal-lead">اسم اللعبة: ${escapeText(title)}</p><div class="modal-note">لم يتم رفع الملف. عند تجهيز Supabase والتخزين، سنربط زر النشر ليحفظ اللعبة ويرفع الملف فعلياً بطريقة آمنة.</div><div class="modal-actions"><button class="btn btn-primary" id="finishPreview">إغلاق</button></div>`;
+   $("finishPreview").addEventListener("click", closeModal);
+ });
+});
+function escapeText(s){return s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function authModal(kind){
+ const signup = kind === "signup";
+ openModal(`<h2 id="modalTitle">${signup?"إنشاء حساب جديد":"تسجيل الدخول"}</h2><p class="modal-lead">واجهة الحساب جاهزة للتصميم، لكن التحقق وتسجيل الدخول الحقيقي يحتاجان ربط Google OAuth وSupabase.</p>
+ <div class="modal-note">سنفعّل زر Google بعد إعداد مشروع Supabase وإعدادات OAuth في Google Cloud. لا تدخل كلمة مرورك هنا حالياً.</div>
+ <div class="modal-actions"><button class="btn btn-primary" id="googleSoon">المتابعة باستخدام Google</button><button class="btn btn-outline" id="authClose">إغلاق</button></div>`);
+ $("googleSoon").addEventListener("click",()=>toast("تسجيل Google سيتفعّل بعد إعداد OAuth."));
+ $("authClose").addEventListener("click",closeModal);
+}
+$("loginBtn").addEventListener("click",()=>authModal("login"));
+$("signupBtn").addEventListener("click",()=>authModal("signup"));
+
+</script>
+</body>
+</html>
